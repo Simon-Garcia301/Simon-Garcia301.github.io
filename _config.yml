@@ -13,11 +13,12 @@ title: Simon's Portfolio # This is what shows up in the tab of the browser
 
 # Hero Section
 name: Simon Garcia Salmeron
-headline: headline message
+headline: Mechanical Engineering Student at the University of St. Thomas.
 description: >- # dont remove this line. this will ignore all new lines until the next section
-  Write an awesome intro and discuss your highlights and qualification. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Simon is sophemore at UST, where he develops his knowldge and interest in biomedical engineering and 
+  design through research, inidividual projects and active engagement with the community. Simon offers
+  a global perspective, being an international student from Nicaragua and having graduated from UWC Mahindra
+  in India.
 
 # Place your profile image in /assets/images/profile-image/folder and edit the file name
 profile_image: ./assets/images/profile-image/avatar.jpeg
