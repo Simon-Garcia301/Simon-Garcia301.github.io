@@ -32,7 +32,7 @@ resume-url: https://drive.google.com/file/d/13Z3duVzh-gguPU5r03oJVEE6rV9rd3DS/vi
 # Set up external links - this will show up as small icons next to your name.
 
 external-links:    # input only your own url slug. The icons with missing entries will not appear.
-  linkedin: https://www.linkedin.com/in/simon-garcia-salmeron-564627310/
+  linkedin: simon-garcia-salmeron-564627310//
   github: https://github.com/Simon-Garcia301?tab=overview&from=2026-07-01&to=2026-07-12
   stackoverflow:    # https://stackoverflow.com/users/{your url slug}
   medium:            # https://medium.com/@{your url slug} 
