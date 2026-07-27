@@ -14,7 +14,7 @@ skills:
   - Data analysis (Python, Matplotlib, Excel)
   - Uncertainty analysis
 
-main-image: /Images/drag-cfd-contour-main.png
+main-image: /drag-cfd-contour-main.png
 ---
 
 ---
@@ -28,7 +28,7 @@ versions in Blender, and ran a digital wind tunnel in SimFlow (an
 OpenFOAM-based CFD platform) at five velocities spanning city to highway
 speeds (5–40 m/s).
 
-{% include image-gallery.html images="Images/car-model-open-windows.png, Images/car-model-closed-windows.png" height="400" %}
+{% include image-gallery.html images="car-model-open-windows.png, car-model-closed-windows.png" height="400" %}
 
 ## Method
 - **Geometry:** 2020 Hyundai Santa Fe STL model, edited in Blender 4.2.3
@@ -41,7 +41,7 @@ speeds (5–40 m/s).
   × 3 iteration counts (500 / 1000 / 1500) to check convergence — 30 runs
   total.
 
-{% include image-gallery.html images="Images/frontal-area-measurement.png" height="400" %}
+{% include image-gallery.html images="frontal-area-measurement.png" height="400" %}
 
 ## Results
 
@@ -53,7 +53,7 @@ speeds (5–40 m/s).
 Opening the windows raised the drag coefficient by about 3.6% and the
 gap held steady across every tested speed.
 
-{% include image-gallery.html images="Images/graph-drag-force-vs-velocity.png, Images/graph-drag-coefficient-vs-velocity.png" height="400" %}
+{% include image-gallery.html images="graph-drag-force-vs-velocity.png, graph-drag-coefficient-vs-velocity.png" height="400" %}
 
 At highway speed (40 m/s), the open-window configuration demanded about
 **1.57 kW** more power than closed windows with AC — roughly **5.66 MJ**
