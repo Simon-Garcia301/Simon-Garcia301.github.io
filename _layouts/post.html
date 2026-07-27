@@ -6,8 +6,8 @@ layout: wrapper
     <div class="summary">
         
        
-        {% assign folder_path = page.path | split: "/" | slice: 0, 2 | join: "/" %}
-        {% assign image_path = "/" | append: folder_path | append: page['main-image'] %}       
+        {% assign page_url_base = page.url | remove: 'index' | remove: '.html' %}
+        {% assign image_path = page_url_base | append: page['main-image'] %}
         <img src="{{ image_path }}" alt="{{ page.title }} image">
         
         <div class="title-header">
