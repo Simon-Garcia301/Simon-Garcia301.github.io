@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Aerodynamic Drag Analysis: Open Windows vs. Air Conditioning
+title: "Aerodynamic Drag Analysis: Open Windows vs. Air Conditioning"
 description:  A Physics Internal Assessment investigating whether opening a car's
     windows increases fuel consumption more than running the air
     conditioning. Used CFD simulation (SimFlow/OpenFOAM) on a 3D-modeled
@@ -15,8 +15,6 @@ skills:
   - Uncertainty analysis
 
 main-image: /drag-cfd-contour-main.png
----
-
 ---
 
 ## Overview
