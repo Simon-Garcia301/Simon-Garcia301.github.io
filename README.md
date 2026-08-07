@@ -325,3 +325,5 @@ To add a table, use the following format
 
 ** make sure to leave a line betwen the table and the header
 
+#   D I W   L a b   S u i t e  
+ 
