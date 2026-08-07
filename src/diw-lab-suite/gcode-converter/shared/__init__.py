@@ -1,0 +1,1 @@
+# Shared UI components, calibration constants, and utilities

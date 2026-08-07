@@ -1,0 +1,1 @@
+# Engine layer — computational logic, separated from GUI

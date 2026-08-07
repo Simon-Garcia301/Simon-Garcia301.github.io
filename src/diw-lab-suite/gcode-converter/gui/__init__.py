@@ -1,0 +1,1 @@
+# GUI layer — user-facing Tkinter/ttkbootstrap windows
