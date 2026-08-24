@@ -26,7 +26,7 @@ profile_image: ./assets/images/profile-image/IMG_20250608_194720.jpg
 
 # Link your resume
 # You can place your resume in assets/resume/{resume.pdf or add external link such as pdf saved in google drive 
-resume-url: https://drive.google.com/file/d/13Z3duVzh-gguPU5r03oJVEE6rV9rd3DS/view?usp=sharing # or /assets/resume/resume.pdf
+resume-url: /assets/resume/Resume.pdf
 
 
 # Set up external links - this will show up as small icons next to your name.
@@ -59,7 +59,7 @@ skills:
 
 
 # Contact Form Setup. Setup an account and copy over the key. When someone fills out the form, it will be received in your email.
-formspree-key:   https://formspree.io/f/{8-digit key}
+formspree-key:   xyz12345
 
 
 

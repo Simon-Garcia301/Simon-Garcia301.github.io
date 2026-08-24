@@ -10,14 +10,14 @@ skills:
   - Python (tkinter/ttkbootstrap, matplotlib, OpenCV, NumPy)
   - PyInstaller packaging
 
-main-image: /launcher-menu.png
+main-image: /diw-suite-showcase.png
 ---
 
 ## Overview
 
 The **DIW Lab Suite** is a unified desktop application toolkit that streamlines three core workflows in Digital Ink Writing (DIW) research laboratories: **G-Code toolpath visualization**, **automated line width microscopy analysis**, and **reflectance-based surface roughness profiling**. It replaces manual, error-prone, multi-tool workflows with integrated, automated, and scientifically rigorous analysis pipelines — all under one consistent interface.
 
-{% include youtube-video.html video="VIDEO_ID_HERE" %}
+{% include image-gallery.html images="launcher-menu.png" height="400" %}
 
 ## Applications
 
