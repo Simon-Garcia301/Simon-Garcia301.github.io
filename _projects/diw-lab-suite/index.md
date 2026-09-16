@@ -17,7 +17,7 @@ main-image: /diw-suite-showcase.png
 
 The **DIW Lab Suite** is a unified desktop application toolkit that streamlines three core workflows in Digital Ink Writing (DIW) research laboratories: **G-Code toolpath visualization**, **automated line width microscopy analysis**, and **reflectance-based surface roughness profiling**. It replaces manual, error-prone, multi-tool workflows with integrated, automated, and scientifically rigorous analysis pipelines — all under one consistent interface.
 
-{% include image-gallery.html images="launcher-menu.png" height="400" %}
+{% include image-gallery.html images="launcher-menu.png" %}
 
 ## Applications
 
@@ -51,7 +51,7 @@ Reflectance-based surface roughness (CV%) quantification using 5x coaxial illumi
 - Per-image and aggregate mean CV%, std dev, pixel count
 - Histogram view of corrected intensities
 
-## Technology Stack
+## Technology stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -61,7 +61,7 @@ Reflectance-based surface roughness (CV%) quantification using 5x coaxial illumi
 | Numerical | NumPy, SciPy | Statistics, array operations |
 | Packaging | PyInstaller | Standalone .exe bundle (~85 MB) |
 
-## Before vs After
+## Before vs. after
 
 | Aspect | Before (Manual) | After (DIW Lab Suite) |
 |--------|----------------|----------------------|
@@ -71,7 +71,7 @@ Reflectance-based surface roughness (CV%) quantification using 5x coaxial illumi
 | Multi-sample processing | Hours of manual work | Batch analysis, minutes |
 | Output format | Scattered spreadsheets | Standardized CSV + PNG |
 
-## Real Lab Workflow Example
+## Real lab workflow example
 
 A researcher prints 24 silver-ink lines on glass at varying speeds. Pre-print, the G-Code Converter verifies the toolpath across all 8 layers. Post-print, the Line Width module processes 48 overlapping microscope images through adaptive Otsu thresholding and stitches them with overlap reconciliation. The Surface Roughness module applies flat-field correction and reports an overall mean CV of 3.2% — well within target. Total time: ~15 minutes vs. 3–4 hours manually.
 
@@ -83,21 +83,20 @@ Full architecture documentation and source code are available in the [src/diw-la
 
 ## Installation
 
-`ash
+```bash
 pip install ttkbootstrap matplotlib opencv-python numpy
 pip install scipy scikit-image pillow tkinterdnd2
 
 # Launch the launcher menu
 python src/diw-lab-suite/gcode-converter/main.py
-`
+```
 
 To build a standalone executable:
-`ash
+```bash
 cd src/diw-lab-suite/gcode-converter
 pyinstaller lee_tool_suite.spec --additional-hooks-dir=.
-`
+```
 
 ## Status
 
 **Completed v4.0.0** — All three tools built, documented, packaged. Ready for lab deployment.
-

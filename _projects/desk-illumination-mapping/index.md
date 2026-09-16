@@ -16,35 +16,35 @@ main-image: /illumination-heatmap.png
 
 Studying at a desk under a single lamp is common practice, especially during long study sessions — but how good is that lighting actually across the whole work surface? This exploration builds a mathematical model of how light spreads from a point source, derives a closed-form illumination function using the inverse square law, then tests that model against 180 real lux measurements taken across a student desk to map where light is strong and where it drops off.
 
-## Deriving the Illumination Function
+## Deriving the illumination function
 
-Modeling the light source as spreading uniformly over a sphere of radius $$r$$, the surface area at any distance is $$A = 4\pi r^2$$. Dividing luminous flux ($$\Phi$$) by that area gives illuminance:
+Modeling the light source as spreading uniformly over a sphere of radius \(r\), the surface area at any distance is \(A = 4\pi r^2\). Dividing luminous flux (\(\Phi\)) by that area gives illuminance:
 
 $$E = \frac{\Phi}{4\pi r^2}$$
 
-{% include image-gallery.html images="sphere-diagram.png, inverse-square-law.png" height="350" %}
+{% include image-gallery.html images="sphere-diagram.png, inverse-square-law.png" %}
 
-Substituting the definition of luminous intensity ($$I = \Phi/\omega$$) and assuming a fully "direct" light source (all flux directed downward, $$\omega = 4\pi$$ steradians) simplifies this to:
+Substituting the definition of luminous intensity (\(I = \Phi/\omega\)) and assuming a fully "direct" light source (all flux directed downward, \(\omega = 4\pi\) steradians) simplifies this to:
 
 $$E = \frac{I}{r^2}$$
 
 This is the working formula used throughout: illuminance at a point equals the source's luminous intensity divided by the square of the distance to that point.
 
-## Mapping the Desk in 3D
+## Mapping the desk in 3D
 
-To apply the formula to a real desk, each measurement point was treated as a coordinate $$(x, y, 0)$$ on the desk plane, with the light source fixed above it at $$(x_{light}, y_{light}, z_{light})$$. Using the Euclidean distance formula, the illumination function becomes:
+To apply the formula to a real desk, each measurement point was treated as a coordinate \((x, y, 0)\) on the desk plane, with the light source fixed above it at \((x_{light}, y_{light}, z_{light})\). Using the Euclidean distance formula, the illumination function becomes:
 
 $$E(x,y) = \frac{I}{(x-x_{light})^2 + (y-y_{light})^2 + z_{light}^2}$$
 
-{% include image-gallery.html images="desk-render.png, light-position-map.png" height="350" %}
+{% include image-gallery.html images="desk-render.png, light-position-map.png" %}
 
 ## Results
 
 180 lux readings were taken across the desk at 5cm intervals and plotted as a heatmap:
 
-{% include image-gallery.html images="illumination-heatmap.png" height="450" %}
+{% include image-gallery.html images="illumination-heatmap.png" %}
 
-Setting the partial derivatives $$\partial E/\partial x$$ and $$\partial E/\partial y$$ to zero shows the function's critical point occurs exactly at $$(x_{light}, y_{light})$$ — the point directly beneath the light. This matched the heatmap: the brightest region sat directly under the lamp, falling off sharply toward the desk's edges, consistent with the inverse-square relationship.
+Setting the partial derivatives \(\partial E/\partial x\) and \(\partial E/\partial y\) to zero shows the function's critical point occurs exactly at \((x_{light}, y_{light})\) — the point directly beneath the light. This matched the heatmap: the brightest region sat directly under the lamp, falling off sharply toward the desk's edges, consistent with the inverse-square relationship.
 
 ## Limitations
 

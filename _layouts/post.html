@@ -2,24 +2,24 @@
 layout: wrapper
 ---
 
-<div class="post-view">
+<main class="post-view">
     <div class="summary">
         
        
         {% assign page_url_base = page.url | remove: 'index' | remove: '.html' %}
         {% assign image_path = page_url_base | append: page['main-image'] %}
-        <img src="{{ image_path }}" alt="{{ page.title }} image">
+        <img src="{{ image_path }}" alt="{{ page.title }} — project overview image">
         
         <div class="title-header">
             <h1>{{page.title}}</h1>
         </div>
         
         <div class="project-description">
-            <h2>Project Overview</h2>
+            <h2>Overview</h2>
             <p>{{ page.description }}</p>
         </div>
         <div class="skills-card">
-            <h2>Skills Used</h2> 
+            <h2>Skills used</h2>
             <div class="skills-list">
                 {% for skill in page.skills %}
                 <span class="skill">{{ skill }}</span>    
@@ -31,5 +31,4 @@ layout: wrapper
     <div class="content">
         {{content}}
     </div>
-</div>
-
+</main>
