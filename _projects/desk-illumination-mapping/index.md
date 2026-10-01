@@ -1,72 +1,41 @@
 ---
 layout: post
-title: "Mapping the Illumination of a Desk"
-description: "A mathematical exploration deriving an illumination function from the inverse square law and 3D distance geometry, then testing it against 180 real lux measurements taken across a study desk to find where light is concentrated and where it's lost."
+order: 5
+title: "Desk Illumination Modeling and Measurement"
+description: "A mathematical exploration of desk illumination using an inverse-square model, spatial geometry, and a heatmap preserved from the original project notes."
 skills:
-  - Multivariable calculus (partial derivatives)
   - Mathematical modeling
-  - Photometry / inverse square law
-  - Python (NumPy, Matplotlib, Seaborn)
-  - Data visualization (heatmaps)
-  - Experimental measurement & uncertainty
-main-image: /illumination-heatmap.png
+  - Spatial geometry
+  - Data visualization
+main-image: illumination-heatmap.png
+main-image-alt: "Desk-illumination heatmap preserved from the earlier project entry, with values labeled in lux."
+main-image-caption: 'Heatmap preserved from the original portfolio materials. The underlying measurement dataset is not included in the available project archive. [1](#ref-1)'
 ---
 
-## Overview
+## Context and problem
 
-Studying at a desk under a single lamp is common practice, especially during long study sessions — but how good is that lighting actually across the whole work surface? This exploration builds a mathematical model of how light spreads from a point source, derives a closed-form illumination function using the inverse square law, then tests that model against 180 real lux measurements taken across a student desk to map where light is strong and where it drops off.
+This exploration considered how illumination varied over a desk beneath a single lamp. The preserved project notes describe an inverse-square model and a spatial heatmap, connecting an everyday lighting problem with mathematical modeling. [1](#ref-1)
 
-## Deriving the illumination function
+## My role and contributions
 
-Modeling the light source as spreading uniformly over a sphere of radius \(r\), the surface area at any distance is \(A = 4\pi r^2\). Dividing luminous flux (\(\Phi\)) by that area gives illuminance:
+My earlier portfolio entry described developing the spatial model and visualizing desk-illumination measurements. The original report, complete dataset, and collaborator record are not available in the current archive, so the extent of individual and shared work remains unverified. [1](#ref-1)
 
-$$E = \frac{\Phi}{4\pi r^2}$$
+## Methods and tools
 
-{% include image-gallery.html images="sphere-diagram.png, inverse-square-law.png" %}
+The earlier notes represented desk positions as points on a plane and related their distance from the lamp to an inverse-square expression. They also included a partial Python plotting example. That example does not contain a complete measurement dataset or a reproducible analysis. [1](#ref-1)
 
-Substituting the definition of luminous intensity (\(I = \Phi/\omega\)) and assuming a fully "direct" light source (all flux directed downward, \(\omega = 4\pi\) steradians) simplifies this to:
-
-$$E = \frac{I}{r^2}$$
-
-This is the working formula used throughout: illuminance at a point equals the source's luminous intensity divided by the square of the distance to that point.
-
-## Mapping the desk in 3D
-
-To apply the formula to a real desk, each measurement point was treated as a coordinate \((x, y, 0)\) on the desk plane, with the light source fixed above it at \((x_{light}, y_{light}, z_{light})\). Using the Euclidean distance formula, the illumination function becomes:
-
-$$E(x,y) = \frac{I}{(x-x_{light})^2 + (y-y_{light})^2 + z_{light}^2}$$
-
-{% include image-gallery.html images="desk-render.png, light-position-map.png" %}
+{% include image-gallery.html images="desk-render.png, light-position-map.png" alts="Desk and lamp geometry illustration preserved with the original project materials.||Coordinate diagram showing the modeled position of the light relative to the desk." captions="Desk geometry illustration from the earlier entry. [1](#ref-1)||Light-position diagram used in the spatial model. [1](#ref-1)" %}
 
 ## Results
 
-180 lux readings were taken across the desk at 5cm intervals and plotted as a heatmap:
+The surviving heatmap and geometry diagrams document the visual presentation of the exploration. They do not, by themselves, establish measurement accuracy, model agreement, or illumination efficiency. I have withheld the earlier numerical sample-count, measurement-spacing, and validation claims until they can be checked against the original report and measurements. [1](#ref-1)
 
-{% include image-gallery.html images="illumination-heatmap.png" %}
+## Outcomes, limitations, and next steps
 
-Setting the partial derivatives \(\partial E/\partial x\) and \(\partial E/\partial y\) to zero shows the function's critical point occurs exactly at \((x_{light}, y_{light})\) — the point directly beneath the light. This matched the heatmap: the brightest region sat directly under the lamp, falling off sharply toward the desk's edges, consistent with the inverse-square relationship.
+The materials preserve a connection between spatial geometry and desk-lighting visualization. A fuller evaluation requires the original model assumptions, lamp and instrument information, complete measurements, and a comparison between predicted and observed illuminance. The simplified expression also needs its illumination geometry reviewed before it is presented as a validated desk-plane model. [1](#ref-1)
 
-## Limitations
+## References
 
-The model only accounts for direct light from the source — it ignores reflection off walls, absorption by objects, and light spreading beyond the desk surface. The lux meter used was also limited to two significant figures, and the 180-point grid, while dense, doesn't capture the theoretically continuous illumination surface.
-
-## Takeaway
-
-A desk lit by a single overhead point source loses illumination quickly with distance — and since a desk's most-used areas often aren't centered directly under the light, a meaningful fraction of usable light is wasted. The exercise turned an everyday annoyance (uneven desk lighting) into a closed-form, testable multivariable function, and confirmed the inverse square law's prediction with real measurements.
-
-**Python used to generate the heatmap:**
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-data = np.array([
-    [15, 17, 19, 22, 25, 28, 31, 34, 36, 36, 37, 37, 37, 35, 33, 30, 28, 25],
-    [15, 18, 20, 23, 26, 30, 33, 35, 37, 37, 38, 38, 38, 37, 35, 32, 29, 26],
-    # ...remaining rows omitted for brevity...
-])
-
-plt.figure(figsize=(10, 8))
-sns.heatmap(data, annot=True, cmap="coolwarm", fmt=".1f", linewidths=0.5)
-plt.title("Heatmap with Data Values (lux)")
-plt.show()
+<ol class="references">
+  <li id="ref-1">[1] “Mapping the Illumination of a Desk,” earlier portfolio entry and associated images, source snapshot <code>07bd891</code>, archived Oct. 1, 2026. Primary study report and complete measurements were not supplied.</li>
+</ol>
