@@ -331,7 +331,8 @@ nav .mobile-nav {
     width: 100%; 
     max-width: 100%; 
     aspect-ratio: 16/9;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--light-background-color);
     display: block;
     border-radius: 6px;
     margin-bottom: 10px; 
@@ -512,10 +513,11 @@ footer {
     min-height: 150px; 
     flex-shrink: 0;
     background-color: var(--light-background-color);
-    width: 100vw;
+    width: auto;
+    margin-inline: -50px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
@@ -816,6 +818,7 @@ footer p {
     body{
         padding: 0 20px;
     }
+    footer { margin-inline: -20px; }
     
     /* SECTION 1:HERO */
     .hero-section {
@@ -978,6 +981,7 @@ footer p {
     body{
         padding: 0 10px;
     }
+    footer { margin-inline: -10px; }
     /*SECTION 1:HERO */
     .hero-section {
         padding: 0 20px
