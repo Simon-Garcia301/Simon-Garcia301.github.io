@@ -1,20 +1,16 @@
-<!-- SECTION 4: Contact-->
-<section id="contact" class= "contact-section">
-    <h2>Contact</h2>
-
-    <div class="group">
-      
-        <form action="https://formspree.io/f/{{site.formspree-key}}" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-
-            <label for="message">Message</label>
-            <textarea id="message" cols = "30" rows="10" name="message"></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
+<!-- SECTION 4: Contact -->
+<section id="contact" class="contact-section" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Contact Me</h2>
+    <p>Interested in my work or have an opportunity to share? I'd love to hear from you.</p>
+    <div class="contact-links">
+        <a href="mailto:{{ site.contact-email | escape }}" class="contact-email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>{{ site.contact-email | escape }}</span>
+        </a>
+        <a href="https://www.linkedin.com/in/{{ site.external-links.linkedin }}/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            <span>Connect on LinkedIn</span>
+        </a>
     </div>
-  </section>
+    <p class="contact-note">The email link opens your email app. You can also copy the address above.</p>
+</section>

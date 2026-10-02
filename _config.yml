@@ -21,7 +21,7 @@ description: >- # dont remove this line. this will ignore all new lines until th
   global perspective to his work.
 
 # Place your profile image in /assets/images/profile-image/folder and edit the file name
-profile_image: ./assets/images/profile-image/IMG_20250608_194720.jpg
+profile_image: /assets/images/profile-image/simon-garcia-salmeron.jpg
 
 
 # Link your resume
@@ -58,8 +58,8 @@ skills:
     - Breadboarding for circuit testing
 
 
-# Contact Form Setup. Setup an account and copy over the key. When someone fills out the form, it will be received in your email.
-formspree-key:   xyz12345
+# Contact section
+contact-email: garc5330@stthomas.edu
 
 
 
