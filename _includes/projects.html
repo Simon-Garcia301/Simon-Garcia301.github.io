@@ -1,14 +1,18 @@
 <!-- SECTION 3: project -->
 <section id="projects" class="project-grid-section">
-    <h2>Projects</h2>
+    <h2>Engineering Projects</h2>
 
     <div class="grid-container">
-        {% for item in site.projects %}
-    <a href="{{ item.url }}" class="project-link">
+        {% assign ordered_projects = site.projects | sort: 'order' %}
+        {% for item in ordered_projects %}
+    <a href="{{ item.url | relative_url }}" class="project-link">
         <div class="project-card">
             {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
-            {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
-            <img src="{{ image_path }}" alt="{{ item.title }} image">
+            {% assign asset_base = '/' | append: folder_path | append: '/' %}
+            {% assign image_path = asset_base | append: item['main-image'] %}
+            {% if item['main-image'] %}
+            <img src="{{ image_path | relative_url }}" alt="{{ item['main-image-alt'] | default: item.title | escape }}" loading="lazy" decoding="async">
+            {% endif %}
             <h3 class="project-title">{{ item.title }}</h3>
             <div class="project-skills">
                 {% for skill in item.skills %}
@@ -16,7 +20,7 @@
                 {% endfor %}
             </div>
             <p class="project-description">{{ item.description }}</p>
-            <button class="read-more">Read more →</button>
+            <span class="read-more" aria-hidden="true">Read more →</span>
         </div>
     </a>
 {% endfor %}

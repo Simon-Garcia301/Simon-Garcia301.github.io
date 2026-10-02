@@ -6,9 +6,15 @@ layout: wrapper
     <div class="summary">
         
        
-        {% assign page_url_base = page.url | remove: 'index' | remove: '.html' %}
-        {% assign image_path = page_url_base | append: page['main-image'] %}
-        <img src="{{ image_path }}" alt="{{ page.title }} — project overview image">
+        {% assign folder_path = page.path | split: '/' | slice: 0, 2 | join: '/' %}
+        {% assign asset_base = '/' | append: folder_path | append: '/' %}
+        {% assign image_path = asset_base | append: page['main-image'] %}
+        {% if page['main-image'] %}
+        <figure class="project-overview-figure">
+            <img src="{{ image_path | relative_url }}" alt="{{ page['main-image-alt'] | default: page.title | escape }}" decoding="async">
+            {% if page['main-image-caption'] %}<figcaption>{{ page['main-image-caption'] | markdownify }}</figcaption>{% endif %}
+        </figure>
+        {% endif %}
         
         <div class="title-header">
             <h1>{{page.title}}</h1>

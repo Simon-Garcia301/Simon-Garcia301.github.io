@@ -297,7 +297,7 @@ nav .mobile-nav {
 
 .project-grid-section .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
     gap: 25px;
     width: 100%;
     margin: 0 auto;
@@ -331,7 +331,8 @@ nav .mobile-nav {
     width: 100%; 
     max-width: 100%; 
     aspect-ratio: 16/9;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--light-background-color);
     display: block;
     border-radius: 6px;
     margin-bottom: 10px; 
@@ -512,10 +513,11 @@ footer {
     min-height: 150px; 
     flex-shrink: 0;
     background-color: var(--light-background-color);
-    width: 100vw;
+    width: auto;
+    margin-inline: -50px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
@@ -607,9 +609,8 @@ footer p {
 .post-view .summary img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 6px;
-    aspect-ratio: 16/7;
     margin: 0 0 1.5rem;
 }
 
@@ -646,7 +647,7 @@ footer p {
  
 .post-view .content .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     align-items: stretch;
     width: 100%;
     gap: 1rem;
@@ -689,8 +690,8 @@ footer p {
 }
   
 .post-view .content  a {
-    color: #3498db;
-    text-decoration: none;
+    color: #2454a6;
+    text-decoration: underline;
     transition: color 0.3s ease;
     margin-bottom: 1em;
   }
@@ -700,7 +701,7 @@ footer p {
   }
 
 .post-view .content  a:hover {
-    color: #2980b9;
+    color: #183b79;
   }
   
 .post-view .content ul, ol {
@@ -781,10 +782,43 @@ footer p {
 
 /*     Responsive styles     */
 
+/* Project evidence, captions, and keyboard access. */
+.project-link:focus-visible,
+.post-view a:focus-visible {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 4px;
+}
+
+.project-overview-figure { margin: 0 0 1.5rem; }
+.project-overview-figure figcaption {
+    color: var(--text-color);
+    font-size: var(--font-size-small);
+}
+.project-overview-figure a {
+    color: #2454a6;
+    text-decoration: underline;
+}
+.post-view .summary .skill,
+.project-card .project-skills .skill {
+    color: #2454a6;
+    white-space: normal;
+}
+.post-view .image-gallery figcaption p { margin-bottom: 0; }
+.post-view .table-scroll { max-width: 100%; overflow-x: auto; }
+.post-view .table-scroll:focus-visible {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 2px;
+}
+.post-view .content th[scope='row'] { font-weight: var(--font-weight-regular); }
+.post-view .references { list-style: none; padding-left: 0; }
+.post-view .references li { margin-bottom: 0.75rem; overflow-wrap: anywhere; }
+.post-view [id^='ref-'] { scroll-margin-top: 1rem; }
+
 @media (max-width: 1200px){
     body{
         padding: 0 20px;
     }
+    footer { margin-inline: -20px; }
     
     /* SECTION 1:HERO */
     .hero-section {
@@ -888,7 +922,7 @@ footer p {
     }
 
     .project-grid-section .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     }
   
     /*SECTION 4:Contact */
@@ -947,6 +981,7 @@ footer p {
     body{
         padding: 0 10px;
     }
+    footer { margin-inline: -10px; }
     /*SECTION 1:HERO */
     .hero-section {
         padding: 0 20px

@@ -1,102 +1,65 @@
-﻿---
+---
 layout: post
-title: "DIW Lab Suite — Digital Ink Writing Research Tools"
-description: Desktop application toolkit for DIW research labs — G-Code toolpath visualization, automated line width microscopy analysis, and reflectance-based surface roughness profiling. Built for the Lee Research Group at the University of St. Thomas.
-skills: 
-  - Digital Ink Writing (DIW)
-  - G-Code / AeroScript parsing
-  - Microscope image analysis (OpenCV, Edge detection)
-  - Surface roughness quantification (flat-field correction)
-  - Python (tkinter/ttkbootstrap, matplotlib, OpenCV, NumPy)
-  - PyInstaller packaging
-
-main-image: /diw-suite-showcase.png
+order: 2
+title: "DIW Laboratory Software: Toolpaths and Microscopy Analysis"
+description: "A Python desktop tool suite for visualizing direct ink writing toolpaths and analyzing microscopy images for the Lee Research Group."
+skills:
+  - Direct ink writing
+  - G-code / AeroScript parsing
+  - Python / NumPy / OpenCV
+  - Tkinter / ttkbootstrap
+  - Matplotlib
+  - Image-analysis quality control
+main-image: diw-suite-showcase.png
+main-image-alt: "Illustration of the suite's toolpath, line-width, and image-intensity analysis modules."
+main-image-caption: 'Illustrative module overview generated for the portfolio; the plotted shapes are not experimental measurements. [[5]](#ref-5)'
 ---
 
-## Overview
+## Context and problem
 
-The **DIW Lab Suite** is a unified desktop application toolkit that streamlines three core workflows in Digital Ink Writing (DIW) research laboratories: **G-Code toolpath visualization**, **automated line width microscopy analysis**, and **reflectance-based surface roughness profiling**. It replaces manual, error-prone, multi-tool workflows with integrated, automated, and scientifically rigorous analysis pipelines — all under one consistent interface.
+Direct ink writing research uses both programmed nozzle paths and post-print microscopy. The suite brought toolpath visualization, line-width analysis, and image-intensity analysis into a shared desktop interface for the Lee Research Group at the University of St. Thomas. [[1]](#ref-1)–[[4]](#ref-4)
 
-{% include image-gallery.html images="launcher-menu.png" %}
+## My role and contributions
 
-## Applications
+I developed the Python tool suite and co-developed calibrated line-width analysis with a research partner. That work used automated edge detection and CSV measurement exports to support experimental analysis. The available résumé identifies the shared contribution but does not name the partner or assign every module individually. [[6]](#ref-6)
 
-### 1. G-Code Converter & Visualizer
+{% include image-gallery.html images="launcher-menu.png" alts="Portfolio illustration of a launcher with buttons for the suite's three analysis modules." captions="Illustrative launcher layout, not a captured application screenshot. [[5]](#ref-5)" %}
 
-Convert Aerotech G-Code / AeroScript files into high-resolution PNG renderings with interactive 2D/3D toolpath inspection. Features include:
+## Methods and tools
 
-- Full support for G0 (travel), G1 (linear print), G2/G3 (arc interpolation), variables, and expressions
-- Layer-by-layer Z-height grouping with smart merging when counts exceed 20
-- Interactive preview with 2D Top, 3D Interactive, and 3D All Layers view modes
-- Plasma-colormap gradient rendering from print start (green) to finish (red)
-- Drag-and-drop file loading, optional bed boundary overlay, snapshot export
+### Toolpath visualization
 
-### 2. Line Width Image Analysis
+The parser implements linear and arc motion handling, position/unit tracking, variables, and layer grouping. Matplotlib renders the parsed paths, and the interface provides 2D and 3D views. These implemented features do not establish compatibility with every G-code or AeroScript program. [[1]](#ref-1), [[4]](#ref-4)
 
-Automated measurement of printed line width, edge profile tracking, and coefficient of variation (CV%) from microscope image scans:
+### Line-width microscopy analysis
 
-- Adaptive Otsu thresholding per image, or manual override
-- Tracking-window edge detection algorithm that follows the line centerline row by row
-- Classic CV% plus robust CV% (MAD-based) for outlier resistance
-- Overlap-aware frame stitching with QA overlay cycling across images
-- Per-row detection logs, batch QA summary reports
+The image-analysis engine supports automatic Otsu or user-selected thresholding, row-wise edge tracking, overlap reconciliation, and measurement exports. It reports a classical coefficient of variation from the mean and standard deviation, plus a median/MAD-based robust statistic. Edge overlays and row logs allow the detected boundaries to be inspected alongside the measurements. [[2]](#ref-2)
 
-### 3. Surface Roughness Analysis
+### Image-intensity variation
 
-Reflectance-based surface roughness (CV%) quantification using 5x coaxial illumination images with self-calibrating flat-field correction:
+The module labeled “Surface Roughness Analysis” computes the mean, standard deviation, and coefficient of variation of grayscale intensity within a selected region, with exclusion masks and an optional illumination correction. Its output describes image-intensity variation; it does not measure surface height or establish a calibrated Ra or Rq roughness value. [[3]](#ref-3)
 
-- Novel self-calibrating vignetting correction — no reference image needed
-- Interactive ROI rectangle selector and glare-exclusion polygon tool
-- Lens enforcement (4x backlight explicitly blocked as incompatible)
-- Per-image and aggregate mean CV%, std dev, pixel count
-- Histogram view of corrected intensities
+### Interface and organization
 
-## Technology stack
+The implementation uses Python, Tkinter/ttkbootstrap, NumPy, OpenCV, and Matplotlib. Computational and interface code reside in separate modules, with shared interface components. A PyInstaller specification is included in the source tree. [[1]](#ref-1)–[[4]](#ref-4)
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| GUI Framework | ttkbootstrap | Modern dark-themed Tkinter widgets |
-| Plotting | matplotlib | 2D/3D toolpath visualization, histograms |
-| Image Processing | OpenCV 4.x | Edge detection, flat-field correction |
-| Numerical | NumPy, SciPy | Statistics, array operations |
-| Packaging | PyInstaller | Standalone .exe bundle (~85 MB) |
+## Results and outputs
 
-## Before vs. after
+The source implements toolpath plots, line-width profiles, image overlays, intensity histograms, and CSV summaries. These outputs support inspection and traceability of the analysis settings. No measured speedup, accuracy benchmark, physical-roughness calibration, or deployment certification is claimed here. [[1]](#ref-1)–[[4]](#ref-4)
 
-| Aspect | Before (Manual) | After (DIW Lab Suite) |
-|--------|----------------|----------------------|
-| Toolpath inspection | Read raw text files | Interactive 2D/3D plots |
-| Line width measurement | Manual cursor placement | Automated edge detection |
-| Surface roughness | Qualitative ("looks smooth") | Quantitative CV% with optics correction |
-| Multi-sample processing | Hours of manual work | Batch analysis, minutes |
-| Output format | Scattered spreadsheets | Standardized CSV + PNG |
+## Outcomes, limitations, and next steps
 
-## Real lab workflow example
+The suite organized related laboratory analysis tasks around a shared launcher and export workflow. Line-width results depend on image calibration, boundary detection, and frame alignment; intensity results also depend on illumination and masking. The included source does not establish that the packaged executable matches every source module. [[1]](#ref-1)–[[4]](#ref-4)
 
-A researcher prints 24 silver-ink lines on glass at varying speeds. Pre-print, the G-Code Converter verifies the toolpath across all 8 layers. Post-print, the Line Width module processes 48 overlapping microscope images through adaptive Otsu thresholding and stitches them with overlap reconciliation. The Surface Roughness module applies flat-field correction and reports an overall mean CV of 3.2% — well within target. Total time: ~15 minutes vs. 3–4 hours manually.
+The next verification steps are to compare automated widths with reference measurements, review the illumination-correction mask behavior, and confirm the packaged application's imports and required assets. Unpublished experimental results and microscopy examples remain outside this portfolio entry.
 
-## Architecture
+## References
 
-The suite follows a modular **Engine-GUI Separation** architecture. Computational logic lives in pure-Python engine modules importable without Tkinter; GUI windows wire user interactions to these engines via background threads. All three apps share calibration constants (LENS_CALIBRATION_UM_PER_PX), theme palette, and widget factories from a common ui_common library.
-
-Full architecture documentation and source code are available in the [src/diw-lab-suite/](../../src/diw-lab-suite/) directory.
-
-## Installation
-
-```bash
-pip install ttkbootstrap matplotlib opencv-python numpy
-pip install scipy scikit-image pillow tkinterdnd2
-
-# Launch the launcher menu
-python src/diw-lab-suite/gcode-converter/main.py
-```
-
-To build a standalone executable:
-```bash
-cd src/diw-lab-suite/gcode-converter
-pyinstaller lee_tool_suite.spec --additional-hooks-dir=.
-```
-
-## Status
-
-**Completed v4.0.0** — All three tools built, documented, packaged. Ready for lab deployment.
+<ol class="references">
+  <li id="ref-1">[1] Lee Research Group, <a href="{{ '/src/diw-lab-suite/gcode-converter/engines/gcode_engine.py' | relative_url }}">“gcode_engine.py,”</a> DIW Lab Suite source, parser and rendering functions.</li>
+  <li id="ref-2">[2] Lee Research Group, <a href="{{ '/src/diw-lab-suite/gcode-converter/engines/line_width_engine.py' | relative_url }}">“line_width_engine.py,”</a> DIW Lab Suite source, edge tracking, stitching, statistics, and export functions.</li>
+  <li id="ref-3">[3] Lee Research Group, <a href="{{ '/src/diw-lab-suite/gcode-converter/engines/surface_roughness_engine.py' | relative_url }}">“surface_roughness_engine.py,”</a> DIW Lab Suite source, intensity-analysis and masking functions.</li>
+  <li id="ref-4">[4] Lee Research Group, DIW Lab Suite source: <a href="{{ '/src/diw-lab-suite/gcode-converter/main.py' | relative_url }}">launcher</a>, <a href="{{ '/src/diw-lab-suite/gcode-converter/gui/gcode_converter_gui.py' | relative_url }}">toolpath interface</a>, <a href="{{ '/src/diw-lab-suite/gcode-converter/gui/image_analysis_gui.py' | relative_url }}">line-width interface</a>, <a href="{{ '/src/diw-lab-suite/gcode-converter/gui/surface_roughness_gui.py' | relative_url }}">intensity interface</a>, <a href="{{ '/src/diw-lab-suite/gcode-converter/shared/ui_common.py' | relative_url }}">shared interface components</a>, and <a href="{{ '/src/diw-lab-suite/gcode-converter/lee_tool_suite.spec' | relative_url }}">PyInstaller specification</a>.</li>
+  <li id="ref-5">[5] “generate_diw_images.py,” portfolio illustration-generation script. <a href="{{ '/scripts/generate_diw_images.py' | relative_url }}">Source</a>.</li>
+  <li id="ref-6">[6] S. Garcia Salmeron, “Simon Garcia Salmeron Resume,” ver. 6, p. 1, “Lee Research Group Tool Suite.” Source résumé retained in the project review archive.</li>
+</ol>

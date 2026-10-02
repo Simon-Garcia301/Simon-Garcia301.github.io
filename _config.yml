@@ -139,6 +139,13 @@ plugins:
 include:
   - _projects
 
+# Review documentation is tracked for maintainers, not published as site content.
+exclude:
+  - docs
+  - scripts/check_project_site.py
+  - README.md
+  - Reference
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

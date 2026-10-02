@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-gem "github-pages", "~= 257"
+gem "github-pages", "= 232"
 gem "jekyll-feed"

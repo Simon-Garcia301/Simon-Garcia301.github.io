@@ -1,21 +1,21 @@
-{% assign image_paths = include.images | split: ", " %}
+{% assign image_paths = include.images | split: ', ' %}
+{% assign alt_texts = include.alts | split: '||' %}
+{% assign captions = include.captions | split: '||' %}
+{% assign folder_path = page.path | split: '/' | slice: 0, 2 | join: '/' %}
+{% assign asset_base = '/' | append: folder_path | append: '/' %}
 <div class="image-gallery">
   {% for image_path in image_paths %}
       {% assign image_name = image_path | strip %}
+      {% assign image_alt = alt_texts[forloop.index0] | default: page.title %}
+      {% assign caption = captions[forloop.index0] %}
       {% if image_name contains 'https://' %}
-          <img 
-              src="{{ image_name }}"
-              alt="Web image"
-              loading="lazy"
-          />
+          {% assign image_url = image_name %}
       {% else %}
-          {% assign page_url_without_index = page.url | remove: 'index' | remove: '.html' %}
-          <img 
-              src="{{ page_url_without_index }}{{ image_name }}" 
-              alt="{{image_name}}"
-              loading="lazy"
-              onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');"
-          />
+          {% assign image_url = asset_base | append: image_name | relative_url %}
       {% endif %}
+      <figure>
+          <img src="{{ image_url }}" alt="{{ image_alt | escape }}" loading="lazy" decoding="async">
+          {% if caption %}<figcaption>{{ caption | markdownify }}</figcaption>{% endif %}
+      </figure>
   {% endfor %}
 </div>
